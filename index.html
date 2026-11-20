@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Two Years With Palwasha - Jawn</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg-dark:#110a0d;--bg-card:#1b1015;--bg-card-soft:#25151d;--text-main:#f8f0ec;--text-muted:#cbb6be;--accent-rose:#e37b96;--accent-gold:#e8c08d;--border-subtle:rgba(232,192,141,.16);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(circle at top,#26121a 0%,var(--bg-dark) 58%,#0a0507 100%);color:var(--text-main);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.8;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600}
+.ambient-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(75px);opacity:.28}
+.orb-1{width:360px;height:360px;background:#9c3856;top:-90px;left:-90px}
+.orb-2{width:300px;height:300px;background:#b98548;bottom:8%;right:-80px}
+#intro-curtain{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at center,#261118 0%,#0c0608 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .95s ease,visibility .95s ease}
+#intro-curtain.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.curtain-box{max-width:580px}
+.tag-pill{display:inline-block;font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent-gold);border:1px solid var(--border-subtle);padding:6px 15px;border-radius:999px;margin-bottom:18px;background:rgba(232,192,141,.06)}
+.curtain-box h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.1;margin-bottom:16px;color:#fff7f4}
+.curtain-box h1 span{color:var(--accent-rose);font-style:italic}
+.curtain-box p{color:var(--text-muted);font-size:1rem;margin-bottom:28px}
+.btn-primary{background:linear-gradient(135deg,#cf5d7b,#8f3652);color:#fff;border:1px solid rgba(255,228,235,.25);padding:14px 32px;border-radius:999px;font-size:.98rem;font-weight:500;cursor:pointer;box-shadow:0 12px 32px rgba(207,93,123,.35)}
+main{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:68px 20px 115px}
+section{margin-bottom:92px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hero{text-align:center;padding-top:20px}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.3rem);line-height:1.08;margin-bottom:14px}
+.hero h1 em{color:var(--accent-rose);font-style:italic}
+.hero-subtitle{max-width:650px;margin:0 auto 36px;color:var(--text-muted);font-size:1.05rem}
+.counter-card{background:linear-gradient(180deg,rgba(37,21,29,.9),rgba(20,12,16,.94));border:1px solid var(--border-subtle);border-radius:22px;padding:26px 18px}
+.counter-label{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:16px}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.time-box{background:rgba(17,10,13,.7);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:14px 8px}
+.time-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1}
+.time-unit{font-size:.75rem;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.sec-header{margin-bottom:24px}
+.sec-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent-gold);display:block;margin-bottom:6px}
+.sec-header h2{font-size:clamp(2rem,4.5vw,2.9rem);line-height:1.14;color:#fff8f5}
+.sec-header p{color:var(--text-muted);margin-top:8px;font-size:.98rem}
+.impact-box{background:var(--bg-card);border-left:3px solid var(--accent-rose);border-radius:0 20px 20px 0;padding:28px 26px;border-top:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.impact-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:#ffd9e3;line-height:1.4}
+.impact-list{list-style:none;display:grid;gap:18px;margin-top:18px}
+.impact-list li{color:var(--text-main);font-size:.98rem;padding-left:20px;position:relative}
+.impact-list li::before{content:"*";position:absolute;left:0;color:var(--accent-gold);font-size:.85rem;top:2px}
+.timeline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.chapter-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:20px;padding:26px}
+.chapter-year{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-rose);font-weight:600;margin-bottom:6px}
+.chapter-card h3{font-size:1.75rem;margin-bottom:12px;color:#fff}
+.chapter-card p{color:var(--text-muted);font-size:.96rem;margin-bottom:12px}
+.mood-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.mood-btn{text-align:left;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:18px;padding:20px;color:var(--text-main);cursor:pointer}
+.mood-btn:hover,.mood-btn.active{background:var(--bg-card-soft);border-color:var(--accent-rose)}
+.mood-title{font-family:'Cormorant Garamond',serif;font-size:1.48rem;color:#fff;display:block;margin-bottom:4px}
+.mood-sub{font-size:.83rem;color:var(--accent-gold)}
+.mood-note-panel{margin-top:18px;background:linear-gradient(145deg,rgba(45,24,35,.94),rgba(20,12,16,.96));border:1px solid rgba(227,123,150,.36);border-radius:20px;padding:26px;min-height:135px}
+.mood-note-panel h4{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--accent-rose);margin-bottom:8px}
+.mood-note-panel p{color:var(--text-main);font-size:.99rem}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.memory-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.memory-date{font-size:.75rem;color:var(--accent-gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.memory-card h3{font-size:1.5rem;color:#fff;margin-bottom:10px;line-height:1.2}
+.memory-story{font-size:.92rem;color:var(--text-muted);margin-bottom:16px}
+.secret-btn{background:transparent;border:1px solid rgba(232,192,141,.35);color:var(--accent-gold);padding:8px 12px;border-radius:10px;font-size:.8rem;cursor:pointer;width:100%}
+.secret-text{display:none;margin-top:10px;font-size:.86rem;color:#ffdce5;font-style:italic;border-top:1px dashed rgba(255,255,255,.14);padding-top:8px}
+.secret-text.open{display:block}
+.letter-paper{background:linear-gradient(180deg,rgba(36,20,28,.95),rgba(19,11,15,.98));border:1px solid var(--border-subtle);border-radius:24px;padding:clamp(26px,5vw,52px)}
+.letter-salutation{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:var(--accent-rose);margin-bottom:20px}
+.letter-paper p{margin-bottom:18px;color:var(--text-main);font-size:1.01rem}
+.letter-closing{margin-top:28px;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--accent-gold);line-height:1.35}
+.finale-box{text-align:center;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:24px;padding:40px 24px}
+.finale-box h2{font-size:clamp(2.1rem,4.5vw,2.8rem);margin-bottom:12px}
+.finale-box p{color:var(--text-muted);max-width:540px;margin:0 auto 26px}
+.finale-response{margin-top:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.75rem;color:#ffd2de;min-height:44px}
+@media(max-width:720px){.counter-grid{grid-template-columns:repeat(2,1fr)}.timeline-grid,.mood-grid,.memory-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ambient-layer"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<div id="intro-curtain">
+<div class="curtain-box">
+<div class="tag-pill">Since Nov 21, 2024 - 11:00 PM</div>
+<h1>For <span>Palwasha</span> - My Jawn</h1>
+<p>Two years since 11:00 PM on November 21, 2024 - the night everything in my heart found its true meaning. Whenever you are ready, Jawn, step inside.</p>
+<button class="btn-primary" id="enter-btn">Open Our Two Years</button>
+</div>
+</div>
+<main>
+<section class="hero reveal">
+<div class="tag-pill">Second Anniversary</div>
+<h1>Palwasha, <em>Jawn</em> - Two Years</h1>
+<p class="hero-subtitle">To the world you are Palwasha, but to me you are Jawn - the girl who taught me what real love feels like, saved me from so many things that could have broken me, and loved me above everything else.</p>
+<div class="counter-card">
+<div class="counter-label">Since November 21, 2024 - 11:00 PM</div>
+<div class="counter-grid">
+<div class="time-box"><div class="time-num" id="days">730</div><div class="time-unit">Days</div></div>
+<div class="time-box"><div class="time-num" id="hours">00</div><div class="time-unit">Hours</div></div>
+<div class="time-box"><div class="time-num" id="minutes">00</div><div class="time-unit">Minutes</div></div>
+<div class="time-box"><div class="time-num" id="seconds">00</div><div class="time-unit">Seconds</div></div>
+</div>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">What You Taught My Heart</span><h2>Jawn, You Changed My Whole World</h2><p>Some people enter your life for a season, you came and showed me how love is truly meant to be lived.</p></div>
+<div class="impact-box">
+<p class="impact-quote">Before you, I did not truly know what real love meant. You taught me how to love deeply, how to make one person my whole world, and you saved me from so many wrong paths.</p>
+<ul class="impact-list">
+<li><strong>You Taught Me What Love Really Is:</strong> Love is not just words - it is loyalty, warmth, care, and staying when it matters most.</li>
+<li><strong>Making One Person My Whole World:</strong> You taught me the beauty of centering my heart on one person - choosing you again and again.</li>
+<li><strong>Saving Me From Bad Things:</strong> Your love and presence pulled me away from things that were bad for me and kept me grounded.</li>
+<li><strong>Loving Me Above Everything Else:</strong> Out of everything and everyone, you always put me first. I will never take that for granted.</li>
+</ul>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Our Story</span><h2>Year One vs. Year Two</h2><p>From 11:00 PM on November 21, 2024 to two full years of devotion.</p></div>
+<div class="timeline-grid">
+<div class="chapter-card"><div class="chapter-year">Year 01</div><h3>Awakening to Real Love</h3><p>Our first year was where my heart woke up to what real love actually feels like. Every conversation with you felt like learning a language I had been missing my whole life.</p><p>It was the year I realized how much better my life became simply because Jawn was in it.</p></div>
+<div class="chapter-card"><div class="chapter-year">Year 02</div><h3>One Person, My Whole World</h3><p>In our second year, love became even deeper and quieter. You stopped being just someone I loved - you became the one person my life revolves around.</p><p>Every day reminded me how rare it is to be loved above everything else the way you love me, Palwasha.</p></div>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Whenever You Need This</span><h2>Open This When You Need Me, Jawn</h2><p>Tap any card whenever your heart feels heavy, tired, or unsure.</p></div>
+<div class="mood-grid">
+<button class="mood-btn active" data-mood="tired"><span class="mood-title">When You Feel Exhausted</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="fight"><span class="mood-title">When We Have a Rough Patch</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="distant"><span class="mood-title">When You Feel Far From Me</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="always"><span class="mood-title">For All the Years Ahead</span><span class="mood-sub">Tap to read</span></button>
+</div>
+<div class="mood-note-panel"><h4 id="mood-heading">When You Feel Exhausted</h4><p id="mood-text">Jawn, you saved me from so many things and loved me above everything else - let me take care of you too. Whenever you are tired, rest your heart on mine. You never have to carry everything alone.</p></div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Unforgettable Truths</span><h2>3 Little Memories, Just For You</h2><p>Tap to reveal the secret I kept for each one.</p></div>
+<div class="memory-grid">
+<div class="memory-card"><div><div class="memory-date">Nov 21, 2024</div><h3>The Night It All Began</h3><p class="memory-story">11:00 PM. One conversation changed everything. I did not know then that you would become my whole world.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Us raat ke baad se meri har dua me tumhara naam aane laga.</div></div>
+<div class="memory-card"><div><div class="memory-date">Our First Year</div><h3>You Taught Me Love</h3><p class="memory-story">You showed me love is not excitement, it is staying, caring, and choosing one person every single day.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Tumne mujhe behtar insaan bana diya, Jawn.</div></div>
+<div class="memory-card"><div><div class="memory-date">Today - Year 02</div><h3>Still Choosing You</h3><p class="memory-story">2 years later, my heart still beats the same way when I hear your name. Palwasha, you are still my home.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Aage bhi har saal, har din, sirf tum.</div></div>
+</div>
+</section>
+<section class="reveal">
+<div class="letter-paper">
+<div class="letter-salutation">My Dearest Jawn,</div>
+<p>Two years ago, at 11:00 PM on November 21, 2024, you came into my life. I did not know at that time that this one person would change everything for me.</p>
+<p>Palwasha, you taught me what real love is. Before you, I thought love was just a word. You showed me it is loyalty, it is care, it is staying, and it is making one person your whole world.</p>
+<p>You saved me from so many bad things without even knowing. Your presence kept me safe, your love kept me grounded, and your voice became my peace.</p>
+<p>I know we had tough days, misunderstandings, and rough patches. But even on those days, my heart never stopped choosing you. You loved me above everything else, and I promise I will do the same for you, always.</p>
+<p>Happy 2nd Anniversary, my Jawn. Thank you for 730 days of love, for every late-night talk, for every smile, and for being mine.</p>
+<div class="letter-closing">Forever Yours,<br>Your Love</div>
+</div>
+</section>
+<section class="reveal">
+<div class="finale-box">
+<h2>Will You Stay With Me Forever, Jawn?</h2>
+<p>No matter how many years pass, my answer will always be you. Now it is your turn.</p>
+<button class="btn-primary" id="yes-btn">YES, FOREVER</button>
+<div class="finale-response" id="finale-response"></div>
+</div>
+</section>
+</main>
+<script>
+var startDate = new Date("2024-11-21T23:00:00");
+function updateCounter(){
+  var now = new Date();
+  var diff = now - startDate;
+  if(diff < 0) diff = 0;
+  var days = Math.floor(diff / (1000*60*60*24));
+  var hours = Math.floor((diff / (1000*60*60)) % 24);
+  var mins = Math.floor((diff / (1000*60)) % 60);
+  var secs = Math.floor((diff / 1000) % 60);
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = String(hours).padStart(2,"0");
+  document.getElementById("minutes").textContent = String(mins).padStart(2,"0");
+  document.getElementById("seconds").textContent = String(secs).padStart(2,"0");
+}
+updateCounter(); setInterval(updateCounter, 1000);
+document.getElementById("enter-btn").addEventListener("click", function(){
+  document.getElementById("intro-curtain").classList.add("hidden");
+  var all = document.querySelectorAll(".reveal");
+  for(var i=0;i<all.length;i++){ all[i].classList.add("visible"); }
+});
+var moods = {
+  tired: ["When You Feel Exhausted", "Jawn, you saved me from so many things and loved me above everything else - let me take care of you too. Whenever you are tired, rest your heart on mine. You never have to carry everything alone."],
+  fight: ["When We Have a Rough Patch", "Jawn, even if we fight, even if we misunderstand each other, remember this - I am not going anywhere. We will fix it together, like always."],
+  distant: ["When You Feel Far From Me", "Distance can never change what I feel for you. Wherever you are, my heart is always with you. You are my home, Palwasha."],
+  always: ["For All the Years Ahead", "2 years done, and a whole lifetime to go. I want to celebrate every anniversary with you, Jawn. Year 3, Year 10, Year 50 - always you."]
+};
+var moodBtns = document.querySelectorAll(".mood-btn");
+for(var j=0;j<moodBtns.length;j++){
+  moodBtns[j].addEventListener("click", function(){
+    for(var k=0;k<moodBtns.length;k++){ moodBtns[k].classList.remove("active"); }
+    this.classList.add("active");
+    var m = moods[this.getAttribute("data-mood")];
+    document.getElementById("mood-heading").textContent = m[0];
+    document.getElementById("mood-text").textContent = m[1];
+  });
+}
+var secretBtns = document.querySelectorAll(".secret-btn");
+for(var s=0;s<secretBtns.length;s++){
+  secretBtns[s].addEventListener("click", function(){
+    var txt = this.nextElementSibling;
+    txt.classList.toggle("open");
+    this.textContent = txt.classList.contains("open") ? "Hide Secret" : "Reveal Secret";
+  });
+}
+document.getElementById("yes-btn").addEventListener("click", function(){
+  document.getElementById("finale-response").textContent = "She Said YES! Forever and Always - Palwasha + Jawn = Forever";
+});
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add("visible"); });
+},{threshold:0.1});
+var reveals = document.querySelectorAll(".reveal");
+for(var r=0;r<reveals.length;r++){ observer.observe(reveals[r]); }
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Two Years With Palwasha - Jawn</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg-dark:#110a0d;--bg-card:#1b1015;--bg-card-soft:#25151d;--text-main:#f8f0ec;--text-muted:#cbb6be;--accent-rose:#e37b96;--accent-gold:#e8c08d;--border-subtle:rgba(232,192,141,.16);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(circle at top,#26121a 0%,var(--bg-dark) 58%,#0a0507 100%);color:var(--text-main);font-family:'Plus Jakarta Sans',sans-serif;line-height:1.8;overflow-x:hidden}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600}
+.ambient-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(75px);opacity:.28}
+.orb-1{width:360px;height:360px;background:#9c3856;top:-90px;left:-90px}
+.orb-2{width:300px;height:300px;background:#b98548;bottom:8%;right:-80px}
+#intro-curtain{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at center,#261118 0%,#0c0608 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;transition:opacity .95s ease,visibility .95s ease}
+#intro-curtain.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.curtain-box{max-width:580px}
+.tag-pill{display:inline-block;font-size:.76rem;text-transform:uppercase;letter-spacing:.18em;color:var(--accent-gold);border:1px solid var(--border-subtle);padding:6px 15px;border-radius:999px;margin-bottom:18px;background:rgba(232,192,141,.06)}
+.curtain-box h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.1;margin-bottom:16px;color:#fff7f4}
+.curtain-box h1 span{color:var(--accent-rose);font-style:italic}
+.curtain-box p{color:var(--text-muted);font-size:1rem;margin-bottom:28px}
+.btn-primary{background:linear-gradient(135deg,#cf5d7b,#8f3652);color:#fff;border:1px solid rgba(255,228,235,.25);padding:14px 32px;border-radius:999px;font-size:.98rem;font-weight:500;cursor:pointer;box-shadow:0 12px 32px rgba(207,93,123,.35)}
+main{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:68px 20px 115px}
+section{margin-bottom:92px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hero{text-align:center;padding-top:20px}
+.hero h1{font-size:clamp(2.6rem,6.5vw,4.3rem);line-height:1.08;margin-bottom:14px}
+.hero h1 em{color:var(--accent-rose);font-style:italic}
+.hero-subtitle{max-width:650px;margin:0 auto 36px;color:var(--text-muted);font-size:1.05rem}
+.counter-card{background:linear-gradient(180deg,rgba(37,21,29,.9),rgba(20,12,16,.94));border:1px solid var(--border-subtle);border-radius:22px;padding:26px 18px}
+.counter-label{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:16px}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.time-box{background:rgba(17,10,13,.7);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:14px 8px}
+.time-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1}
+.time-unit{font-size:.75rem;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em}
+.sec-header{margin-bottom:24px}
+.sec-kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent-gold);display:block;margin-bottom:6px}
+.sec-header h2{font-size:clamp(2rem,4.5vw,2.9rem);line-height:1.14;color:#fff8f5}
+.sec-header p{color:var(--text-muted);margin-top:8px;font-size:.98rem}
+.impact-box{background:var(--bg-card);border-left:3px solid var(--accent-rose);border-radius:0 20px 20px 0;padding:28px 26px;border-top:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)}
+.impact-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.55rem;color:#ffd9e3;line-height:1.4}
+.impact-list{list-style:none;display:grid;gap:18px;margin-top:18px}
+.impact-list li{color:var(--text-main);font-size:.98rem;padding-left:20px;position:relative}
+.impact-list li::before{content:"*";position:absolute;left:0;color:var(--accent-gold);font-size:.85rem;top:2px}
+.timeline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.chapter-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:20px;padding:26px}
+.chapter-year{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-rose);font-weight:600;margin-bottom:6px}
+.chapter-card h3{font-size:1.75rem;margin-bottom:12px;color:#fff}
+.chapter-card p{color:var(--text-muted);font-size:.96rem;margin-bottom:12px}
+.mood-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.mood-btn{text-align:left;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:18px;padding:20px;color:var(--text-main);cursor:pointer}
+.mood-btn:hover,.mood-btn.active{background:var(--bg-card-soft);border-color:var(--accent-rose)}
+.mood-title{font-family:'Cormorant Garamond',serif;font-size:1.48rem;color:#fff;display:block;margin-bottom:4px}
+.mood-sub{font-size:.83rem;color:var(--accent-gold)}
+.mood-note-panel{margin-top:18px;background:linear-gradient(145deg,rgba(45,24,35,.94),rgba(20,12,16,.96));border:1px solid rgba(227,123,150,.36);border-radius:20px;padding:26px;min-height:135px}
+.mood-note-panel h4{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--accent-rose);margin-bottom:8px}
+.mood-note-panel p{color:var(--text-main);font-size:.99rem}
+.memory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.memory-card{background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:space-between}
+.memory-date{font-size:.75rem;color:var(--accent-gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.memory-card h3{font-size:1.5rem;color:#fff;margin-bottom:10px;line-height:1.2}
+.memory-story{font-size:.92rem;color:var(--text-muted);margin-bottom:16px}
+.secret-btn{background:transparent;border:1px solid rgba(232,192,141,.35);color:var(--accent-gold);padding:8px 12px;border-radius:10px;font-size:.8rem;cursor:pointer;width:100%}
+.secret-text{display:none;margin-top:10px;font-size:.86rem;color:#ffdce5;font-style:italic;border-top:1px dashed rgba(255,255,255,.14);padding-top:8px}
+.secret-text.open{display:block}
+.letter-paper{background:linear-gradient(180deg,rgba(36,20,28,.95),rgba(19,11,15,.98));border:1px solid var(--border-subtle);border-radius:24px;padding:clamp(26px,5vw,52px)}
+.letter-salutation{font-family:'Cormorant Garamond',serif;font-size:2.1rem;color:var(--accent-rose);margin-bottom:20px}
+.letter-paper p{margin-bottom:18px;color:var(--text-main);font-size:1.01rem}
+.letter-closing{margin-top:28px;font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--accent-gold);line-height:1.35}
+.finale-box{text-align:center;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:24px;padding:40px 24px}
+.finale-box h2{font-size:clamp(2.1rem,4.5vw,2.8rem);margin-bottom:12px}
+.finale-box p{color:var(--text-muted);max-width:540px;margin:0 auto 26px}
+.finale-response{margin-top:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.75rem;color:#ffd2de;min-height:44px}
+@media(max-width:720px){.counter-grid{grid-template-columns:repeat(2,1fr)}.timeline-grid,.mood-grid,.memory-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="ambient-layer"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<div id="intro-curtain">
+<div class="curtain-box">
+<div class="tag-pill">Since Nov 21, 2024 - 11:00 PM</div>
+<h1>For <span>Palwasha</span> - My Jawn</h1>
+<p>Two years since 11:00 PM on November 21, 2024 - the night everything in my heart found its true meaning. Whenever you are ready, Jawn, step inside.</p>
+<button class="btn-primary" id="enter-btn">Open Our Two Years</button>
+</div>
+</div>
+<main>
+<section class="hero reveal">
+<div class="tag-pill">Second Anniversary</div>
+<h1>Palwasha, <em>Jawn</em> - Two Years</h1>
+<p class="hero-subtitle">To the world you are Palwasha, but to me you are Jawn - the girl who taught me what real love feels like, saved me from so many things that could have broken me, and loved me above everything else.</p>
+<div class="counter-card">
+<div class="counter-label">Since November 21, 2024 - 11:00 PM</div>
+<div class="counter-grid">
+<div class="time-box"><div class="time-num" id="days">730</div><div class="time-unit">Days</div></div>
+<div class="time-box"><div class="time-num" id="hours">00</div><div class="time-unit">Hours</div></div>
+<div class="time-box"><div class="time-num" id="minutes">00</div><div class="time-unit">Minutes</div></div>
+<div class="time-box"><div class="time-num" id="seconds">00</div><div class="time-unit">Seconds</div></div>
+</div>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">What You Taught My Heart</span><h2>Jawn, You Changed My Whole World</h2><p>Some people enter your life for a season, you came and showed me how love is truly meant to be lived.</p></div>
+<div class="impact-box">
+<p class="impact-quote">Before you, I did not truly know what real love meant. You taught me how to love deeply, how to make one person my whole world, and you saved me from so many wrong paths.</p>
+<ul class="impact-list">
+<li><strong>You Taught Me What Love Really Is:</strong> Love is not just words - it is loyalty, warmth, care, and staying when it matters most.</li>
+<li><strong>Making One Person My Whole World:</strong> You taught me the beauty of centering my heart on one person - choosing you again and again.</li>
+<li><strong>Saving Me From Bad Things:</strong> Your love and presence pulled me away from things that were bad for me and kept me grounded.</li>
+<li><strong>Loving Me Above Everything Else:</strong> Out of everything and everyone, you always put me first. I will never take that for granted.</li>
+</ul>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Our Story</span><h2>Year One vs. Year Two</h2><p>From 11:00 PM on November 21, 2024 to two full years of devotion.</p></div>
+<div class="timeline-grid">
+<div class="chapter-card"><div class="chapter-year">Year 01</div><h3>Awakening to Real Love</h3><p>Our first year was where my heart woke up to what real love actually feels like. Every conversation with you felt like learning a language I had been missing my whole life.</p><p>It was the year I realized how much better my life became simply because Jawn was in it.</p></div>
+<div class="chapter-card"><div class="chapter-year">Year 02</div><h3>One Person, My Whole World</h3><p>In our second year, love became even deeper and quieter. You stopped being just someone I loved - you became the one person my life revolves around.</p><p>Every day reminded me how rare it is to be loved above everything else the way you love me, Palwasha.</p></div>
+</div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Whenever You Need This</span><h2>Open This When You Need Me, Jawn</h2><p>Tap any card whenever your heart feels heavy, tired, or unsure.</p></div>
+<div class="mood-grid">
+<button class="mood-btn active" data-mood="tired"><span class="mood-title">When You Feel Exhausted</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="fight"><span class="mood-title">When We Have a Rough Patch</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="distant"><span class="mood-title">When You Feel Far From Me</span><span class="mood-sub">Tap to read</span></button>
+<button class="mood-btn" data-mood="always"><span class="mood-title">For All the Years Ahead</span><span class="mood-sub">Tap to read</span></button>
+</div>
+<div class="mood-note-panel"><h4 id="mood-heading">When You Feel Exhausted</h4><p id="mood-text">Jawn, you saved me from so many things and loved me above everything else - let me take care of you too. Whenever you are tired, rest your heart on mine. You never have to carry everything alone.</p></div>
+</section>
+<section class="reveal">
+<div class="sec-header"><span class="sec-kicker">Unforgettable Truths</span><h2>3 Little Memories, Just For You</h2><p>Tap to reveal the secret I kept for each one.</p></div>
+<div class="memory-grid">
+<div class="memory-card"><div><div class="memory-date">Nov 21, 2024</div><h3>The Night It All Began</h3><p class="memory-story">11:00 PM. One conversation changed everything. I did not know then that you would become my whole world.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Us raat ke baad se meri har dua me tumhara naam aane laga.</div></div>
+<div class="memory-card"><div><div class="memory-date">Our First Year</div><h3>You Taught Me Love</h3><p class="memory-story">You showed me love is not excitement, it is staying, caring, and choosing one person every single day.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Tumne mujhe behtar insaan bana diya, Jawn.</div></div>
+<div class="memory-card"><div><div class="memory-date">Today - Year 02</div><h3>Still Choosing You</h3><p class="memory-story">2 years later, my heart still beats the same way when I hear your name. Palwasha, you are still my home.</p></div><button class="secret-btn">Reveal Secret</button><div class="secret-text">Secret: Aage bhi har saal, har din, sirf tum.</div></div>
+</div>
+</section>
+<section class="reveal">
+<div class="letter-paper">
+<div class="letter-salutation">My Dearest Jawn,</div>
+<p>Two years ago, at 11:00 PM on November 21, 2024, you came into my life. I did not know at that time that this one person would change everything for me.</p>
+<p>Palwasha, you taught me what real love is. Before you, I thought love was just a word. You showed me it is loyalty, it is care, it is staying, and it is making one person your whole world.</p>
+<p>You saved me from so many bad things without even knowing. Your presence kept me safe, your love kept me grounded, and your voice became my peace.</p>
+<p>I know we had tough days, misunderstandings, and rough patches. But even on those days, my heart never stopped choosing you. You loved me above everything else, and I promise I will do the same for you, always.</p>
+<p>Happy 2nd Anniversary, my Jawn. Thank you for 730 days of love, for every late-night talk, for every smile, and for being mine.</p>
+<div class="letter-closing">Forever Yours,<br>Your Love</div>
+</div>
+</section>
+<section class="reveal">
+<div class="finale-box">
+<h2>Will You Stay With Me Forever, Jawn?</h2>
+<p>No matter how many years pass, my answer will always be you. Now it is your turn.</p>
+<button class="btn-primary" id="yes-btn">YES, FOREVER</button>
+<div class="finale-response" id="finale-response"></div>
+</div>
+</section>
+</main>
+<script>
+var startDate = new Date("2024-11-21T23:00:00");
+function updateCounter(){
+  var now = new Date();
+  var diff = now - startDate;
+  if(diff < 0) diff = 0;
+  var days = Math.floor(diff / (1000*60*60*24));
+  var hours = Math.floor((diff / (1000*60*60)) % 24);
+  var mins = Math.floor((diff / (1000*60)) % 60);
+  var secs = Math.floor((diff / 1000) % 60);
+  document.getElementById("days").textContent = days;
+  document.getElementById("hours").textContent = String(hours).padStart(2,"0");
+  document.getElementById("minutes").textContent = String(mins).padStart(2,"0");
+  document.getElementById("seconds").textContent = String(secs).padStart(2,"0");
+}
+updateCounter(); setInterval(updateCounter, 1000);
+document.getElementById("enter-btn").addEventListener("click", function(){
+  document.getElementById("intro-curtain").classList.add("hidden");
+  var all = document.querySelectorAll(".reveal");
+  for(var i=0;i<all.length;i++){ all[i].classList.add("visible"); }
+});
+var moods = {
+  tired: ["When You Feel Exhausted", "Jawn, you saved me from so many things and loved me above everything else - let me take care of you too. Whenever you are tired, rest your heart on mine. You never have to carry everything alone."],
+  fight: ["When We Have a Rough Patch", "Jawn, even if we fight, even if we misunderstand each other, remember this - I am not going anywhere. We will fix it together, like always."],
+  distant: ["When You Feel Far From Me", "Distance can never change what I feel for you. Wherever you are, my heart is always with you. You are my home, Palwasha."],
+  always: ["For All the Years Ahead", "2 years done, and a whole lifetime to go. I want to celebrate every anniversary with you, Jawn. Year 3, Year 10, Year 50 - always you."]
+};
+var moodBtns = document.querySelectorAll(".mood-btn");
+for(var j=0;j<moodBtns.length;j++){
+  moodBtns[j].addEventListener("click", function(){
+    for(var k=0;k<moodBtns.length;k++){ moodBtns[k].classList.remove("active"); }
+    this.classList.add("active");
+    var m = moods[this.getAttribute("data-mood")];
+    document.getElementById("mood-heading").textContent = m[0];
+    document.getElementById("mood-text").textContent = m[1];
+  });
+}
+var secretBtns = document.querySelectorAll(".secret-btn");
+for(var s=0;s<secretBtns.length;s++){
+  secretBtns[s].addEventListener("click", function(){
+    var txt = this.nextElementSibling;
+    txt.classList.toggle("open");
+    this.textContent = txt.classList.contains("open") ? "Hide Secret" : "Reveal Secret";
+  });
+}
+document.getElementById("yes-btn").addEventListener("click", function(){
+  document.getElementById("finale-response").textContent = "She Said YES! Forever and Always - Palwasha + Jawn = Forever";
+});
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add("visible"); });
+},{threshold:0.1});
+var reveals = document.querySelectorAll(".reveal");
+for(var r=0;r<reveals.length;r++){ observer.observe(reveals[r]); }
+</script>
+</body>
+</html>
